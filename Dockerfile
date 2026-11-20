@@ -1,11 +1,12 @@
-FROM node.js:22-alpine
-MAINTAINER sreeja
-LABEL this is node.js code
-EXPOSE 80
+FROM node:22-alpine
+MAINTAINER "sreeja"
+LABEL This is node application
+EXPOSE 3000
 WORKDIR /app
-COPY package*.json ./
+COPY package*.json
 RUN npm install --production
 COPY . .
-RUN chown -R node:node . ./
+RUN chown -R node:node . /app
 USER node
-CMD ["node.js" , "app.js"]
+CMD ["node" "app.js"]
+
